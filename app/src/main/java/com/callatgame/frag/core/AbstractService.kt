@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.callatgame.frag.R
 import com.callatgame.frag.model.ErrorType
-import com.callatgame.frag.model.UgcError
+import com.callatgame.frag.model.CaGError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ abstract class AbstractService<T>(var context : Context) {
             if(!NetworkUtil.verifyAvailableNetwork(context)){
                 CoroutineScope(Dispatchers.Main).launch {
                     callback.onError(
-                        UgcError(
+                        CaGError(
                             ErrorType.NETWORK_ERROR,
                             context.getString(R.string.netword_unavailable_generic_error)
                         )
@@ -40,7 +40,7 @@ abstract class AbstractService<T>(var context : Context) {
                     response.body()?.let { callback.onSuccess(it) }
                 } else {
                     callback.onError(
-                        UgcError(ErrorType.BACKEND_ERROR, response.errorBody()!!.string())
+                        CaGError(ErrorType.BACKEND_ERROR, response.errorBody()!!.string())
                     )
                 }
             }
@@ -49,7 +49,7 @@ abstract class AbstractService<T>(var context : Context) {
 
             CoroutineScope(Dispatchers.Main).launch {
                 callback.onError(
-                    UgcError(
+                    CaGError(
                         ErrorType.UNEXCEPTED_ERROR,
                         context.getString(R.string.unexcepted_generic_error)
                     )
