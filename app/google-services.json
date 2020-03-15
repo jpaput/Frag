@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "737290334249",
+    "firebase_url": "https://call-at-game.firebaseio.com",
+    "project_id": "call-at-game",
+    "storage_bucket": "call-at-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737290334249:android:0c966f6bb9f6e659dbac38",
+        "android_client_info": {
+          "package_name": "com.callatgame.frag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737290334249-4qeoi2igrdg4ghgmrcinvjqnv8o279g6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.callatgame.frag",
+            "certificate_hash": "88252f195b67d3a339485fded3f8bf3fdb36c78a"
+          }
+        },
+        {
+          "client_id": "737290334249-0lctgmtfh6tsi3ka8gv416fski0vgop8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBusfDXuDTeiltuUDuuw3KY9LeB-_8SlFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737290334249-0lctgmtfh6tsi3ka8gv416fski0vgop8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

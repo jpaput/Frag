@@ -1,16 +1,21 @@
 package com.callatgame.frag.splashscreen
 
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.callatgame.frag.R
+import com.callatgame.frag.common.callback.LoaderCallback
 import com.callatgame.frag.core.AbstractActivity
 import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.model.CaGError
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.service.TechnicalService
+import com.callatgame.frag.starter.StarterActivity
 import kotlinx.android.synthetic.main.splashscreen_activity.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashscreenActivity : AbstractActivity() {
 
@@ -24,7 +29,10 @@ class SplashscreenActivity : AbstractActivity() {
     override fun onResume() {
         super.onResume()
 
-        getConfig()
+        GlobalScope.launch(context = Dispatchers.Main) {
+            delay(1200)
+            getConfig()
+        }
     }
 
     private fun showAppVersion() {
@@ -40,19 +48,18 @@ class SplashscreenActivity : AbstractActivity() {
 
     private fun getConfig() {
 
-        progress_wheel.show()
 
         TechnicalService(baseContext).getConfig(
             object : RequestCallBack<Config> {
 
                 override fun onSuccess(response: Config) {
-                    progress_wheel.hide()
-                    /*startActivity(MainActivity.newIntent(baseContext))
-                    finishAffinity()*/
+                    startActivity(StarterActivity.newIntent(baseContext))
+                              finishAffinity()
+                   
                 }
 
                 override fun onError(error: CaGError) {
-                    progress_wheel.hide()
+                    //progress_wheel.hide()
                     showError(error.message)
                 }
             }
