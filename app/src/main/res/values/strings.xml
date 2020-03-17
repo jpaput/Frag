@@ -8,5 +8,14 @@
 
     <!-- SplashScreen -->
     <string name="version_string">Version : </string>
+    <string name="login_title">Login</string>
+    <string name="signup_title">Inscription</string>
+    <string name="login_button">Connexion</string>
+    <string name="label_login_pass">Mot de passe</string>
+    <string name="label_login_name">Email</string>
+    <string name="create_new_account">Créer un nouveau compte</string>
+    <string name="or">ou connectez-vous avec</string>
+    <string name="connect_now">Me connecter</string>
+    <string name="signup_button">Inscription</string>
 
 </resources>
