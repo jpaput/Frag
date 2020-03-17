@@ -46,4 +46,10 @@
         <item name="android:paddingEnd">@dimen/small</item>
         <item name="android:cursorVisible">true</item>
     </style>
+
+    <style name="AutocompleteLightTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>
