@@ -1,4 +1,5 @@
 package com.callatgame.frag.model
 
-abstract class DefaultResponse {
-}
+import android.os.Message
+
+data class DefaultResponse(val message: String)

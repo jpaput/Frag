@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 
-abstract class AbstractService<T>(var context : Context) {
+abstract class AbstractService(var context : Context) {
 
     val apiEndPoint: ApiEndPoint
 

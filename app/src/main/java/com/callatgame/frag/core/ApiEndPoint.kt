@@ -2,6 +2,8 @@ package com.callatgame.frag.core
 
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.payload.LoginPayload
+import com.callatgame.frag.model.payload.SignupPayload
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -16,10 +18,17 @@ interface ApiEndPoint {
         const val V1 = "/v1"
 
         const val TECHNICAL = "/technical"
+        const val USERS = "/users"
+        const val AUTH = "/auth"
 
     }
 
     @GET(API + V1 + TECHNICAL + "/config")
     fun getConfig() : Call<Config>
 
+    @POST(API + V1 + USERS)
+    fun signup(@Body payload: SignupPayload): Call<DefaultResponse>
+
+    @POST(API + V1 + USERS + AUTH)
+    fun login(@Body payload: LoginPayload): Call<DefaultResponse>
 }

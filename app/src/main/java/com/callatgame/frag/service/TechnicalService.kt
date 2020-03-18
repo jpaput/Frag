@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TechnicalService(context : Context) : AbstractService<Config>(context) {
+class TechnicalService(context : Context) : AbstractService(context) {
 
     @WorkerThread
     fun getConfig(callback: RequestCallBack<Config>) {
