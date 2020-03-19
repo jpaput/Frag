@@ -15,6 +15,8 @@ class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
 
     companion object{
 
+        val EMAIL_CONFIRMED = "EMAIL_CONFIRMED"
+
         fun newIntent(context : Context) : Intent{
             return Intent(context, StarterActivity::class.java)
         }
@@ -24,6 +26,13 @@ class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.start_activity)
+
+        if (intent != null) {
+            if (intent.hasExtra(EMAIL_CONFIRMED)) {
+                showSuccessDialog(getString(R.string.email_confirmed))
+                intent.removeExtra(EMAIL_CONFIRMED)
+            }
+        }
 
         viewpager.adapter = StarterPagerAdapter(supportFragmentManager);
         viewpager.setPageTransformer(false, this)

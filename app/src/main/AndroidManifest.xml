@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".splashscreen.SplashscreenActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout"
@@ -23,9 +24,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".starter.StarterActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout"
             android:theme="@style/FullTranslucent"/>
+
+        <activity android:name=".splashscreen.DeeplinkActivity"
+            android:launchMode = "singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Email Validation Deeplink -->
+                <data
+                    android:host="callatgame.com"
+                    android:pathPrefix="/verify"
+                    android:scheme="http" />
+
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

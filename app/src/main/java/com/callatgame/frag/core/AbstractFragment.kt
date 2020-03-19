@@ -5,7 +5,7 @@ import com.callatgame.frag.common.ui.SuccessDialog
 
 abstract class AbstractFragment : Fragment() {
 
-    private fun getAbstractActivity() : AbstractActivity {
+    open fun getAbstractActivity() : AbstractActivity {
         return activity as AbstractActivity
     }
 

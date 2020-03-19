@@ -4,6 +4,7 @@ import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
+import com.callatgame.frag.model.payload.VerifyEmailPayload
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -18,12 +19,15 @@ interface ApiEndPoint {
         const val V1 = "/v1"
 
         const val TECHNICAL = "/technical"
+        const val CONFIG = "/config"
+
         const val USERS = "/users"
         const val AUTH = "/auth"
+        const val VERIFY = "/verify"
 
     }
 
-    @GET(API + V1 + TECHNICAL + "/config")
+    @GET(API + V1 + TECHNICAL + CONFIG)
     fun getConfig() : Call<Config>
 
     @POST(API + V1 + USERS)
@@ -31,4 +35,7 @@ interface ApiEndPoint {
 
     @POST(API + V1 + USERS + AUTH)
     fun login(@Body payload: LoginPayload): Call<DefaultResponse>
+
+    @POST(API + V1 + USERS + VERIFY)
+    fun verify(@Body payload: VerifyEmailPayload): Call<DefaultResponse>
 }

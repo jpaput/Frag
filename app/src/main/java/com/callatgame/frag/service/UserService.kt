@@ -8,6 +8,7 @@ import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
+import com.callatgame.frag.model.payload.VerifyEmailPayload
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +30,14 @@ class UserService(context : Context) : AbstractService(context) {
             execute(
                 apiEndPoint.login(payload),
                 callback)
+        }
+    }
+
+    fun verify(payload: VerifyEmailPayload, callBack: RequestCallBack<DefaultResponse>) {
+        CoroutineScope(Dispatchers.IO).launch {
+            execute(
+                apiEndPoint.verify(payload),
+                callBack)
         }
     }
 }

@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.callatgame.frag.common.ui.ErrorDialogFragment
 import com.callatgame.frag.common.ui.ProgressDialog
 import com.callatgame.frag.common.ui.SuccessDialog
@@ -70,6 +73,13 @@ abstract class AbstractActivity : AppCompatActivity() {
         .setMessage(message)
 
         successDialog.show(supportFragmentManager, SUCCESS_DIALOG)
+    }
+
+    open fun addFragmentToActivity(fragment : Fragment,  frameId : Int) {
+
+        val transaction : FragmentTransaction  = supportFragmentManager.beginTransaction();
+        transaction.add(frameId, fragment);
+        transaction.commit();
     }
 
     open fun showSuccessDialog() {

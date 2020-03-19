@@ -6,16 +6,29 @@
     <string name="unexcepted_generic_error">Une erreur inattendue est survenu</string>
     <string name="cancel">Fermer</string>
 
-    <!-- SplashScreen -->
+    <!-- SplashScreen Activity -->
     <string name="version_string">Version : </string>
-    <string name="login_title">Login</string>
-    <string name="signup_title">Inscription</string>
-    <string name="login_button">Connexion</string>
+
+
+    <!-- Starter Activity -->
+    <string name="email_confirmed">Votre email à été confirmé.</string>
     <string name="label_login_pass">Mot de passe</string>
     <string name="label_login_name">Email</string>
-    <string name="create_new_account">Créer un nouveau compte</string>
+
+    <!-- login fragment -->
+    <string name="login_button">Connexion</string>
     <string name="or">ou connectez-vous avec</string>
+    <string name="create_new_account">Créer un nouveau compte</string>
+
+    <!-- signup fragment -->
     <string name="connect_now">Me connecter</string>
     <string name="signup_button">Inscription</string>
+
+
+    <!-- Email sent fragment -->
+    <string name="open_email_client_description">Ouvrez votre boite mail pour valider votre email.</string>
+    <string name="open_my_mail_client">Ouvrir ma boite email</string>
+    <string name="choose_email">Choisissez votre client mail</string>
+
 
 </resources>
