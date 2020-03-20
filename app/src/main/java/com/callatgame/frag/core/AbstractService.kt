@@ -15,7 +15,7 @@ abstract class AbstractService(var context : Context) {
     val apiEndPoint: ApiEndPoint
 
     init {
-        apiEndPoint = NetworkUtil.getRetrofit().create(ApiEndPoint::class.java)
+        apiEndPoint = NetworkUtil.getRetrofit(context).create(ApiEndPoint::class.java)
     }
 
 

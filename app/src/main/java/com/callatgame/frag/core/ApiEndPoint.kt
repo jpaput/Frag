@@ -2,6 +2,7 @@ package com.callatgame.frag.core
 
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
 import com.callatgame.frag.model.payload.VerifyEmailPayload
@@ -34,7 +35,7 @@ interface ApiEndPoint {
     fun signup(@Body payload: SignupPayload): Call<DefaultResponse>
 
     @POST(API + V1 + USERS + AUTH)
-    fun login(@Body payload: LoginPayload): Call<DefaultResponse>
+    fun login(@Body payload: LoginPayload): Call<TokenResponse>
 
     @POST(API + V1 + USERS + VERIFY)
     fun verify(@Body payload: VerifyEmailPayload): Call<DefaultResponse>

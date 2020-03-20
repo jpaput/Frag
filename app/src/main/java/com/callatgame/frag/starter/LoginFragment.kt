@@ -8,9 +8,11 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.callatgame.frag.R
 import com.callatgame.frag.core.AbstractFragment
+import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.model.CaGError
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
 import com.callatgame.frag.service.UserService
@@ -36,10 +38,11 @@ class LoginFragment : AbstractFragment() {
             showProgressDialog()
             UserService(activity!!.baseContext).login(
                 makePayload(),
-                object : RequestCallBack<DefaultResponse> {
+                object : RequestCallBack<TokenResponse> {
 
-                    override fun onSuccess(response: DefaultResponse) {
+                    override fun onSuccess(result: TokenResponse) {
                         hideProgressDialog()
+                        PreferenceManager(context).saveToken(result.token)
                         showSuccessDialog()
                     }
 

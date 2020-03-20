@@ -6,6 +6,7 @@ import com.callatgame.frag.core.AbstractService
 import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
 import com.callatgame.frag.model.payload.VerifyEmailPayload
@@ -25,7 +26,7 @@ class UserService(context : Context) : AbstractService(context) {
     }
 
     @WorkerThread
-    fun login(payload : LoginPayload, callback: RequestCallBack<DefaultResponse>) {
+    fun login(payload : LoginPayload, callback: RequestCallBack<TokenResponse>) {
         CoroutineScope(Dispatchers.IO).launch {
             execute(
                 apiEndPoint.login(payload),
