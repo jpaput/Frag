@@ -4,14 +4,14 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
 import com.callatgame.frag.R
-import com.callatgame.frag.common.callback.LoaderCallback
+import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.AbstractActivity
+import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.RequestCallBack
-import com.callatgame.frag.model.CaGError
+import com.callatgame.frag.main.MainActivity
 import com.callatgame.frag.model.Config
-import com.callatgame.frag.service.TechnicalService
+import com.callatgame.frag.splashscreen.task.GetConfigtask
 import com.callatgame.frag.starter.StarterActivity
-import kotlinx.android.synthetic.main.splashscreen_activity.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -48,21 +48,27 @@ class SplashscreenActivity : AbstractActivity() {
 
     private fun getConfig() {
 
-
-        TechnicalService(baseContext).getConfig(
+        GetConfigtask(baseContext).execute(
             object : RequestCallBack<Config> {
-
-                override fun onSuccess(response: Config) {
-                    startActivity(StarterActivity.newIntent(baseContext))
-                              finishAffinity()
-                   
+                override fun onSuccess(result: Config) {
+                    start()
                 }
 
-                override fun onError(error: CaGError) {
+                override fun onError(error: CaGException) {
                     //progress_wheel.hide()
                     showError(error.message)
                 }
             }
         )
+    }
+
+    private fun start(){
+        if(PreferenceManager(baseContext).hasToken()){
+            startActivity(MainActivity.newIntent(baseContext))
+            finishAffinity()
+        }else{
+            startActivity(StarterActivity.newIntent(baseContext))
+            finishAffinity()
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.callatgame.frag.core
 
 import androidx.annotation.MainThread
-import com.callatgame.frag.model.CaGError
+import com.callatgame.frag.common.exception.CaGException
 
 interface RequestCallBack<Result> {
 
@@ -9,6 +9,6 @@ interface RequestCallBack<Result> {
     fun onSuccess(result : Result)
 
     @MainThread
-    fun onError(error : CaGError)
+    fun onError(error : CaGException)
 
 }

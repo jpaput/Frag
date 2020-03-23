@@ -3,24 +3,21 @@ package com.callatgame.frag.splashscreen
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.TextView
 import com.callatgame.frag.R
+import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.AbstractActivity
 import com.callatgame.frag.core.RequestCallBack
-import com.callatgame.frag.model.CaGError
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DeeplinkType
 import com.callatgame.frag.model.DefaultResponse
-import com.callatgame.frag.model.payload.VerifyEmailPayload
-import com.callatgame.frag.service.TechnicalService
-import com.callatgame.frag.service.UserService
+import com.callatgame.frag.splashscreen.task.GetConfigtask
+import com.callatgame.frag.splashscreen.task.VerifyEmailTask
 import com.callatgame.frag.starter.StarterActivity
 import com.callatgame.frag.starter.StarterActivity.Companion.EMAIL_CONFIRMED
-import kotlinx.android.synthetic.main.progress_dialog.*
 
 
-class DeeplinkActivity :AbstractActivity() {
+class DeeplinkActivity : AbstractActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,14 +46,14 @@ class DeeplinkActivity :AbstractActivity() {
     private fun getConfig() {
 
         showProgressDialog()
-        TechnicalService(baseContext).getConfig(
-            object : RequestCallBack<Config> {
 
-                override fun onSuccess(response: Config) {
+        GetConfigtask(baseContext).execute(
+            object : RequestCallBack<Config> {
+                override fun onSuccess(result: Config) {
                     manageDeeplink()
                 }
 
-                override fun onError(error: CaGError) {
+                override fun onError(error: CaGException) {
                     hideProgressDialog()
                     showError(error.message)
                 }
@@ -81,23 +78,25 @@ class DeeplinkActivity :AbstractActivity() {
         }
     }
 
-    private fun verifyEmail(token : String) {
-        UserService(baseContext).verify(
-            VerifyEmailPayload(token),
+    private fun verifyEmail(token: String) {
+
+        VerifyEmailTask(baseContext, token).execute(
             object : RequestCallBack<DefaultResponse> {
 
                 override fun onSuccess(result: DefaultResponse) {
                     hideProgressDialog()
                     startActivity(
                         StarterActivity.newIntent(baseContext)
-                            .putExtra(EMAIL_CONFIRMED, true))
+                            .putExtra(EMAIL_CONFIRMED, true)
+                    )
                     finishAffinity()
                 }
 
-                override fun onError(error: CaGError) {
+                override fun onError(error: CaGException) {
                     showError(error.message)
                     hideProgressDialog()
                 }
             })
+
     }
 }

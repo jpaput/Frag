@@ -19,6 +19,8 @@ class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
 
         fun newIntent(context : Context) : Intent{
             return Intent(context, StarterActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
     }
 
@@ -45,22 +47,7 @@ class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
         val pageWidth = view.width
         when {
             position < -1 -> view.alpha = 0f
-            position <= 1 -> {
-                /*view.findViewById<View>(R.id.tv_app_name).translationX = -(pageWidth * position)
-                view.findViewById<View>(R.id.tv_app_subtitle).translationX = -(pageWidth * position)
-
-                view.findViewById<View>(R.id.userView).translationX = pageWidth * position
-                view.findViewById<View>(R.id.tv_user_label).translationX = pageWidth * position
-                view.findViewById<View>(R.id.view_user_underline).translationX = pageWidth * position
-                view.findViewById<View>(R.id.profileImage).translationX = pageWidth * position
-
-                view.findViewById<View>(R.id.passView).translationX = pageWidth * position
-                view.findViewById<View>(R.id.tv_pass_label).translationX = pageWidth * position
-                view.findViewById<View>(R.id.view_pass_underline).translationX = pageWidth * position
-                view.findViewById<View>(R.id.iv_pass_icon).translationX = pageWidth * position
-
-                view.findViewById<View>(R.id.commandButton).translationX = -(pageWidth * position)*/
-            }
+            position <= 1 -> { }
             else -> view.alpha = 0f
         }
     }

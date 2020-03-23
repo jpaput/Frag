@@ -7,6 +7,7 @@ class CaGApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        //FacebookSdk.sdkInitialize(getApplicationContext());
+        SessionManager.instance
+
     }
 }

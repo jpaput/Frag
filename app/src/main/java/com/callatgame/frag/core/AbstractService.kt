@@ -1,60 +1,50 @@
 package com.callatgame.frag.core
 
 import android.content.Context
-import android.util.Log
 import com.callatgame.frag.R
-import com.callatgame.frag.model.ErrorType
-import com.callatgame.frag.model.CaGError
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.callatgame.frag.common.exception.AuthorizationException
+import com.callatgame.frag.common.exception.CaGException
+import com.callatgame.frag.common.exception.ErrorType
 import retrofit2.Call
+import java.io.IOException
 
 abstract class AbstractService(var context : Context) {
 
-    val apiEndPoint: ApiEndPoint
+    protected val apiEndPoint: ApiEndPoint
 
     init {
         apiEndPoint = NetworkUtil.getRetrofit(context).create(ApiEndPoint::class.java)
     }
 
 
-    protected fun <Result> execute(call: Call<Result>, callback: RequestCallBack<Result> ) {
+    @Throws(
+        IOException::class,
+        CaGException::class)
+    protected open fun <Result> execute(call: Call<Result>): Result? {
+
         try {
             if(!NetworkUtil.verifyAvailableNetwork(context)){
-                CoroutineScope(Dispatchers.Main).launch {
-                    callback.onError(
-                        CaGError(
-                            ErrorType.NETWORK_ERROR,
-                            context.getString(R.string.netword_unavailable_generic_error)
-                        )
-                    )
-                }
-                return
-            }
-            val response= call.execute()
-
-            CoroutineScope(Dispatchers.Main).launch {
-
-                if (response.isSuccessful) {
-                    response.body()?.let { callback.onSuccess(it) }
-                } else {
-                    callback.onError(
-                        CaGError(ErrorType.BACKEND_ERROR, response.errorBody()!!.string())
-                    )
-                }
-            }
-        } catch (e: Exception) {
-            Log.e(AbstractService::class.java.simpleName, e.toString())
-
-            CoroutineScope(Dispatchers.Main).launch {
-                callback.onError(
-                    CaGError(
-                        ErrorType.UNEXCEPTED_ERROR,
-                        context.getString(R.string.unexcepted_generic_error)
-                    )
+                throw CaGException(
+                    ErrorType.NETWORK_ERROR,
+                    context.getString(R.string.netword_unavailable_generic_error)
                 )
             }
+                val response = call.execute()
+
+            if (response.isSuccessful) {
+                return response.body()
+            }
+
+            when(response.code()){
+                401 -> throw AuthorizationException()
+                else -> throw CaGException(
+                    ErrorType.BACKEND_ERROR,
+                    response.errorBody()!!.string()
+                )
+            }
+
+        } catch (exception : Exception) {
+            throw exception
         }
     }
 }

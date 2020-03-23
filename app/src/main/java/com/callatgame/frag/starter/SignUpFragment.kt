@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.callatgame.frag.R
-import com.callatgame.frag.core.AbstractActivity
+import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.AbstractFragment
 import com.callatgame.frag.core.RequestCallBack
-import com.callatgame.frag.model.CaGError
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.payload.SignupPayload
-import com.callatgame.frag.service.UserService
+import com.callatgame.frag.starter.task.SignupTask
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 
 class SignUpFragment : AbstractFragment() {
@@ -37,8 +36,7 @@ class SignUpFragment : AbstractFragment() {
 
         view.findViewById<Button>(R.id.signupButton).setOnClickListener {
             showProgressDialog()
-            UserService(activity!!.baseContext).signup(
-                makePayload(),
+            SignupTask(context!!, makePayload()).execute(
                 object : RequestCallBack<DefaultResponse> {
 
                     override fun onSuccess(result: DefaultResponse) {
@@ -49,9 +47,9 @@ class SignUpFragment : AbstractFragment() {
                         )
                     }
 
-                    override fun onError(error: CaGError) {
+                    override fun onError(error: CaGException) {
                         hideProgressDialog()
-                        showError(error.message)
+                        showError(error.message!!)
                     }
                 })
         }

@@ -1,3 +1,3 @@
 package com.callatgame.frag.model
 
-data class TokenResponse(val token : String)
+data class TokenResponse(val token : String) : Data

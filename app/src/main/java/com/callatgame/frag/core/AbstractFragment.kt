@@ -1,7 +1,6 @@
 package com.callatgame.frag.core
 
 import androidx.fragment.app.Fragment
-import com.callatgame.frag.common.ui.SuccessDialog
 
 abstract class AbstractFragment : Fragment() {
 

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.callatgame.frag.common.ui.ErrorDialogFragment
 import com.callatgame.frag.common.ui.ProgressDialog

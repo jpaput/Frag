@@ -29,6 +29,10 @@
             android:configChanges="keyboardHidden|screenSize|screenLayout"
             android:theme="@style/FullTranslucent"/>
 
+        <activity android:name=".main.MainActivity"
+            android:configChanges="keyboardHidden|screenSize|screenLayout"
+            android:theme="@style/FullTranslucent"/>
+
         <activity android:name=".splashscreen.DeeplinkActivity"
             android:launchMode = "singleTask">
             <intent-filter>

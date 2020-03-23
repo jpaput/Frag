@@ -3,20 +3,17 @@ package com.callatgame.frag.service
 import android.content.Context
 import androidx.annotation.WorkerThread
 import com.callatgame.frag.core.AbstractService
-import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.model.Config
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.callatgame.frag.model.DefaultResponse
 
 class TechnicalService(context : Context) : AbstractService(context) {
 
     @WorkerThread
-    fun getConfig(callback: RequestCallBack<Config>) {
-        CoroutineScope(Dispatchers.IO).launch {
-            execute(
-                apiEndPoint.getConfig(),
-                callback)
-        }
+    fun getConfig() : Config {
+        return execute(apiEndPoint.getConfig())!!
+    }
+
+    fun test401(): DefaultResponse {
+        return execute(apiEndPoint.test401())!!
     }
 }
