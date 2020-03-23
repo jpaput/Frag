@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
 import com.callatgame.frag.BuildConfig
+import com.callatgame.frag.R
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -49,13 +50,15 @@ class NetworkUtil {
                         override fun intercept(chain: Interceptor.Chain): Response {
                             val original = chain.request()
                             val requestBuilder = original.newBuilder()
-                                .addHeader("x-access-token", PreferenceManager(context).getToken())
                                 .addHeader(
                                     "User-Agent",
-                                    "Android " + Build.VERSION.RELEASE + "; CallAtGame " + BuildConfig.VERSION_NAME
+                                    "Android " + Build.VERSION.RELEASE + " ;" + context.getString(R.string.app_name) + BuildConfig.VERSION_NAME
                                 )
                                 .method(original.method, original.body)
 
+                            if(PreferenceManager(context).hasToken()){
+                                requestBuilder.addHeader("Authorization", "Bearer " + PreferenceManager(context).getToken())
+                            }
 
                             return chain.proceed(requestBuilder.build())
                         }
