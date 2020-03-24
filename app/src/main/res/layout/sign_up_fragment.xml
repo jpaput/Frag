@@ -6,7 +6,7 @@
     android:paddingStart="@dimen/padding_standard"
     android:paddingEnd="@dimen/padding_standard">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.callatgame.frag.common.ui.ImprovedTextInputLayout
         android:id="@+id/email_textinputlayout"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
@@ -21,33 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextInputEditText"
+            android:drawableEnd="@drawable/ic_user"
+            android:drawableTint="@android:color/white"
             android:hint="@string/hint_email"
             android:imeOptions="actionNext"
             android:inputType="textWebEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.callatgame.frag.common.ui.ImprovedTextInputLayout>
 
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/profileImage"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:tint="@android:color/white"
-        app:layout_constraintRight_toRightOf="@+id/email_textinputlayout"
-        app:layout_constraintTop_toTopOf="@+id/email_textinputlayout"
-        app:layout_constraintBottom_toBottomOf="@+id/email_textinputlayout"
-        app:srcCompat="@drawable/ic_user"
-        android:elevation="3dp"
-        android:shadowColor="@color/darktextColor"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="4"/>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <com.callatgame.frag.common.ui.ImprovedTextInputLayout
         android:id="@+id/password_textinputlayout"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marge_large"
         app:layout_constraintLeft_toLeftOf="@+id/email_textinputlayout"
         app:layout_constraintTop_toBottomOf="@+id/email_textinputlayout">
 
@@ -56,26 +41,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextInputEditText"
+            android:drawableEnd="@drawable/ic_lock"
+            android:drawableTint="@android:color/white"
             android:hint="@string/hint_password"
             android:imeOptions="actionDone"
             android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_pass_icon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:tint="@android:color/white"
-        app:layout_constraintRight_toRightOf="@+id/password_textinputlayout"
-        app:layout_constraintTop_toTopOf="@+id/password_textinputlayout"
-        app:layout_constraintBottom_toBottomOf="@+id/password_textinputlayout"
-        app:srcCompat="@drawable/ic_lock"
-        android:elevation="3dp"
-        android:shadowColor="@color/darktextColor"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="4"/>
+    </com.callatgame.frag.common.ui.ImprovedTextInputLayout>
 
     <Button
         android:id="@+id/signupButton"
@@ -91,10 +62,11 @@
         android:shadowRadius="4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/password_textinputlayout"
-        app:layout_constraintRight_toRightOf="@+id/iv_pass_icon"
+        app:layout_constraintRight_toRightOf="@+id/password_textinputlayout"
         app:layout_constraintTop_toBottomOf="@+id/password_textinputlayout" />
 
     <TextView
+        android:id="@+id/sign_up_text_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"

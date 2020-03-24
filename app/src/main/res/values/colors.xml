@@ -5,6 +5,8 @@
     <color name="colorAccent">#28e7b1</color>
     <color name="colorAccentDark">#14a3b1</color>
 
+    <color name="red_error">#ED4337</color>
+
 
     <color name="antracite_grey_with_transparency">#AA404A56</color>
     <color name="antracite_grey">#404A56</color>

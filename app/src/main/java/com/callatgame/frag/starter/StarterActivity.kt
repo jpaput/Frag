@@ -13,9 +13,14 @@ import kotlinx.android.synthetic.main.start_activity.*
 class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
     ViewPager.OnPageChangeListener {
 
+
+
     companion object{
 
         val EMAIL_CONFIRMED = "EMAIL_CONFIRMED"
+        val LOGIN = 0;
+        val SIGN_UP = 1;
+
 
         fun newIntent(context : Context) : Intent{
             return Intent(context, StarterActivity::class.java)
@@ -68,4 +73,7 @@ class StarterActivity : AbstractActivity(), ViewPager.PageTransformer,
                 viewpager.adapter!!.count - 1).toFloat()
     }
 
+    public fun changeToPage(page :Int){
+        viewpager.setCurrentItem(page)
+    }
 }

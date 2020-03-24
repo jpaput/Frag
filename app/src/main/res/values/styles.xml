@@ -62,19 +62,31 @@
         <item name="hintTextAppearance">@style/HintText</item>
         <item name="passwordToggleTint">@android:color/white</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
     </style>
 
     <style name="HintText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextInputEditText">
         <item name="android:backgroundTint">@android:color/white</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="errorEnabled">false</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">@dimen/text_size_standard</item>
+        <item name="android:textColor">@color/red_error</item>
+        <item name="android:drawableTint"></item>
+        <item name="android:textStyle">bold</item>
 
 
     </style>
+
 
 </resources>

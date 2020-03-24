@@ -14,6 +14,9 @@
     <string name="email_confirmed">Votre email à été confirmé.</string>
     <string name="hint_password">Mot de passe</string>
     <string name="hint_email">Email</string>
+    <string name="mandatory_field_message">Ce champ est obligatoire</string>
+    <string name="email_incorrect_format_message">Format d\'email incorrect</string>
+    <string name="password_not_secured_message">Le mot de passe saisi ne respecte pas les règles de sécurité</string>
 
     <!-- login fragment -->
     <string name="login_button">Connexion</string>
@@ -29,6 +32,7 @@
     <string name="open_email_client_description">Ouvrez votre boite mail pour valider votre email.</string>
     <string name="open_my_mail_client">Ouvrir ma boite email</string>
     <string name="choose_email">Choisissez votre client mail</string>
+    <string name="insuffisant_length_password">Votre mot de passe doit contenir au moins 6 caractères</string>
 
 
 </resources>
