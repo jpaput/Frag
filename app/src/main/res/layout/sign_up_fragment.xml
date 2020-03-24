@@ -6,96 +6,76 @@
     android:paddingStart="@dimen/padding_standard"
     android:paddingEnd="@dimen/padding_standard">
 
-    <TextView
-        android:id="@+id/tv_user_label"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_textinputlayout"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:labelFor="@id/emailView"
-        android:text="@string/label_login_name"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/marge_large"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <AutoCompleteTextView
-        android:id="@+id/emailView"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/transparent"
-        android:inputType="textEmailAddress"
-        android:textColor="@android:color/white"
-        android:textCursorDrawable="@null"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_user_label"
-        app:layout_constraintRight_toLeftOf="@+id/profileImage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_label" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextInputEditText"
+            android:hint="@string/hint_email"
+            android:imeOptions="actionNext"
+            android:inputType="textWebEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profileImage"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:tint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/emailView"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/emailView"
-        app:srcCompat="@drawable/ic_user" />
+        app:layout_constraintRight_toRightOf="@+id/email_textinputlayout"
+        app:layout_constraintTop_toTopOf="@+id/email_textinputlayout"
+        app:layout_constraintBottom_toBottomOf="@+id/email_textinputlayout"
+        app:srcCompat="@drawable/ic_user"
+        android:elevation="3dp"
+        android:shadowColor="@color/darktextColor"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="4"/>
 
-    <View
-        android:id="@+id/view_user_underline"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/white"
-        app:layout_constraintLeft_toLeftOf="@+id/emailView"
-        app:layout_constraintRight_toRightOf="@+id/profileImage"
-        app:layout_constraintTop_toBottomOf="@+id/emailView" />
-
-    <TextView
-        android:id="@+id/tv_pass_label"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_textinputlayout"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:labelFor="@id/passView"
-        android:text="@string/label_login_pass"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
-        app:layout_constraintLeft_toLeftOf="@+id/view_user_underline"
-        app:layout_constraintTop_toBottomOf="@+id/view_user_underline" />
+        android:layout_marginTop="@dimen/marge_large"
+        app:layout_constraintLeft_toLeftOf="@+id/email_textinputlayout"
+        app:layout_constraintTop_toBottomOf="@+id/email_textinputlayout">
 
-    <AutoCompleteTextView
-        android:id="@+id/passView"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="4dp"
-        android:inputType="textWebPassword"
-        android:textColor="@android:color/white"
-        android:textCursorDrawable="@null"
-        android:background="@android:color/transparent"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_pass_label"
-        app:layout_constraintRight_toLeftOf="@+id/iv_pass_icon"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pass_label" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextInputEditText"
+            android:hint="@string/hint_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_pass_icon"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:tint="@android:color/white"
-        app:layout_constraintRight_toRightOf="@+id/view_user_underline"
-        app:layout_constraintTop_toTopOf="@+id/passView"
-        app:srcCompat="@drawable/ic_lock" />
-
-    <View
-        android:id="@+id/view_pass_underline"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/passView"
-        app:layout_constraintRight_toRightOf="@+id/iv_pass_icon"
-        app:layout_constraintTop_toBottomOf="@+id/passView" />
+        app:layout_constraintRight_toRightOf="@+id/password_textinputlayout"
+        app:layout_constraintTop_toTopOf="@+id/password_textinputlayout"
+        app:layout_constraintBottom_toBottomOf="@+id/password_textinputlayout"
+        app:srcCompat="@drawable/ic_lock"
+        android:elevation="3dp"
+        android:shadowColor="@color/darktextColor"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="4"/>
 
     <Button
         android:id="@+id/signupButton"
@@ -104,10 +84,15 @@
         android:layout_marginTop="@dimen/margin_standard"
         style="@style/FullButtonStyle"
         android:text="@string/signup_button"
+        android:elevation="6dp"
+        android:shadowColor="@color/darktextColor"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/passView"
+        app:layout_constraintLeft_toLeftOf="@+id/password_textinputlayout"
         app:layout_constraintRight_toRightOf="@+id/iv_pass_icon"
-        app:layout_constraintTop_toBottomOf="@+id/view_pass_underline" />
+        app:layout_constraintTop_toBottomOf="@+id/password_textinputlayout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,6 +103,7 @@
         android:textStyle="bold"
         android:layout_marginTop="@dimen/margin_standard"
         android:textColor="@android:color/white"
+        android:elevation="3dp"
         android:shadowColor="@color/darktextColor"
         android:shadowDx="3"
         android:shadowDy="3"

@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlActivated">@android:color/white</item>
+
     </style>
 
     <style name="TranslucentStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -52,4 +55,26 @@
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="TextInputLayout"  parent="@android:style/TextAppearance">
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="passwordToggleTint">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="TextInputEditText">
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textColor">@android:color/white</item>
+
+
+    </style>
+
 </resources>

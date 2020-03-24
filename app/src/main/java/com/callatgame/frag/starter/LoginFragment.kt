@@ -53,8 +53,8 @@ class LoginFragment : AbstractFragment() {
 
     private fun makePayload(): LoginPayload {
         return LoginPayload(
-            emailView.text.toString(),
-            passView.text.toString()
+            email_edittext.text.toString(),
+            password_edittext.toString()
         )
     }
 }

@@ -12,8 +12,8 @@
 
     <!-- Starter Activity -->
     <string name="email_confirmed">Votre email à été confirmé.</string>
-    <string name="label_login_pass">Mot de passe</string>
-    <string name="label_login_name">Email</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_email">Email</string>
 
     <!-- login fragment -->
     <string name="login_button">Connexion</string>

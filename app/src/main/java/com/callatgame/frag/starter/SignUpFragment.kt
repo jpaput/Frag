@@ -60,8 +60,8 @@ class SignUpFragment : AbstractFragment() {
 
     private fun makePayload(): SignupPayload {
         return SignupPayload(
-            emailView.text.toString(),
-            passView.text.toString()
+            email_edittext.text.toString(),
+            password_edittext.text.toString()
         )
     }
 }
