@@ -6,17 +6,19 @@ import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.SessionManager
 import com.callatgame.frag.model.AuthentificationMethod
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.payload.GoogleTokenPayload
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.service.UserService
 
-class LoginTask(val context: Context, val payload: LoginPayload) : AbstractTask<DefaultResponse>(context) {
+class SendGoogleTokenTask(val context: Context, val payload: GoogleTokenPayload) : AbstractTask<DefaultResponse>(context) {
 
     override fun doCall(): DefaultResponse {
-        val result = UserService(context).login(payload)
+        val result = UserService(context).sendGoogleToken(payload)
+
         PreferenceManager(context).saveToken(result.token)
+        PreferenceManager(context).setAuthentificationMethod(AuthentificationMethod.GOOGLE)
 
         SessionManager.instance.user = UserService(context).getUser()
-        PreferenceManager(context).setAuthentificationMethod(AuthentificationMethod.CREDENTIALS)
 
         return DefaultResponse("")
     }

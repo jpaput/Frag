@@ -9,13 +9,16 @@ import com.callatgame.frag.core.AbstractActivity
 import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.main.MainActivity
+import com.callatgame.frag.model.AuthentificationMethod
 import com.callatgame.frag.model.Config
 import com.callatgame.frag.splashscreen.task.GetConfigtask
 import com.callatgame.frag.starter.StarterActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 class SplashscreenActivity : AbstractActivity() {
 
@@ -63,6 +66,7 @@ class SplashscreenActivity : AbstractActivity() {
     }
 
     private fun start(){
+
         if(PreferenceManager(baseContext).hasToken()){
             startActivity(MainActivity.newIntent(baseContext))
             finishAffinity()

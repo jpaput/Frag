@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "737290334249-c21oqbg03sidk9h2sofi1iqe778lc452.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.callatgame.frag",
+            "certificate_hash": "1e07c3f9b8a6ee2583f913b053168d1a262d62be"
+          }
+        },
+        {
           "client_id": "737290334249-4qeoi2igrdg4ghgmrcinvjqnv8o279g6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -36,7 +44,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "737290334249-0lctgmtfh6tsi3ka8gv416fski0vgop8.apps.googleusercontent.com",
+              "client_id": "737290334249-d8hk968us31rvitc3fvnp7g1rp8i21er.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

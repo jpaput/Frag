@@ -4,6 +4,7 @@ import com.callatgame.frag.model.Config
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.User
+import com.callatgame.frag.model.payload.GoogleTokenPayload
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
 import com.callatgame.frag.model.payload.VerifyEmailPayload
@@ -27,23 +28,32 @@ interface ApiEndPoint {
         const val AUTH = "/auth"
         const val VERIFY = "/verify"
         const val ME = "/me"
+        const val GOOGLE = "/googleTokenSignin"
 
     }
 
     @GET(API + V1 + TECHNICAL + CONFIG)
     fun getConfig() : Call<Config>
 
+    //User register
     @POST(API + V1 + USERS)
     fun signup(@Body payload: SignupPayload): Call<DefaultResponse>
 
+    //User Authentification
     @POST(API + V1 + USERS + AUTH)
     fun login(@Body payload: LoginPayload): Call<TokenResponse>
 
+    //Verify user email
     @POST(API + V1 + USERS + VERIFY)
     fun verify(@Body payload: VerifyEmailPayload): Call<DefaultResponse>
 
+    //Get current user data
     @GET(API + V1 + USERS + ME)
     fun getUser(): Call<User>
+
+    //Send Google token after Google SignIn
+    @POST(API + V1 + USERS + GOOGLE)
+    fun sendGoogleToken(@Body payload: GoogleTokenPayload): Call<TokenResponse>
 
     @GET(API + V1 + TECHNICAL + "/401")
     fun test401(): Call<DefaultResponse?>

@@ -5,6 +5,7 @@ import com.callatgame.frag.core.AbstractService
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.User
+import com.callatgame.frag.model.payload.GoogleTokenPayload
 import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.model.payload.SignupPayload
 import com.callatgame.frag.model.payload.VerifyEmailPayload
@@ -29,5 +30,10 @@ class UserService(context: Context) : AbstractService(context) {
     fun getUser() : User {
         return execute(
             apiEndPoint.getUser())!!
+    }
+
+    fun sendGoogleToken(payload: GoogleTokenPayload) : TokenResponse {
+        return execute(
+            apiEndPoint.sendGoogleToken(payload))!!
     }
 }
