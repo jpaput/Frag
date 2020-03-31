@@ -17,19 +17,6 @@ class GetConfigtask(val context: Context) : AbstractTask<Config>(context) {
 
         val config = TechnicalService(context).getConfig()
 
-        when(PreferenceManager(context).getAuthentificationMethod()){
-            AuthentificationMethod.CREDENTIALS -> {
-                SessionManager.instance.user = UserService(context).getUser()
-            }
-            AuthentificationMethod.GOOGLE -> {
-                val account = GoogleSignIn.getLastSignedInAccount(context)
-                val result = UserService(context).sendGoogleToken(GoogleTokenPayload(account!!.idToken!!))
-                PreferenceManager(context).saveToken(result.token)
-
-                SessionManager.instance.user = UserService(context).getUser()
-            }
-        }
-
         return config;
     }
 }

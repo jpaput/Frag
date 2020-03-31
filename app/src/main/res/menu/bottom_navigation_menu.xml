@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/games_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_basketball"
+        android:title="@string/bottom_navigation_menu_games"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/rank_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_rank"
+        android:title="@string/bottom_navigation_menu_rank"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/profile_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/bottom_navigation_menu_profile"
+        app:showAsAction="ifRoom" />
+</menu>

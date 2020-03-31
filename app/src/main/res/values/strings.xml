@@ -12,7 +12,6 @@
     <!-- SplashScreen Activity -->
     <string name="version_string">Version : </string>
 
-
     <!-- Starter Activity -->
     <string name="email_confirmed">Votre email à été confirmé.</string>
     <string name="hint_password">Mot de passe</string>
@@ -38,4 +37,8 @@
     <string name="insuffisant_length_password">Votre mot de passe doit contenir au moins 6 caractères</string>
 
 
+    <!-- Bottom navigation menu -->
+    <string name="bottom_navigation_menu_profile">Mon profile</string>
+    <string name="bottom_navigation_menu_games">Mes matchs</string>
+    <string name="bottom_navigation_menu_rank">Classement</string>
 </resources>

@@ -82,10 +82,8 @@
     <style name="ErrorText" parent="TextAppearance.Design.Error">
         <item name="android:textSize">@dimen/text_size_standard</item>
         <item name="android:textColor">@color/red_error</item>
-        <item name="android:drawableTint"></item>
+        <item name="android:drawableTint">@color/red_error</item>
         <item name="android:textStyle">bold</item>
-
-
     </style>
 
 

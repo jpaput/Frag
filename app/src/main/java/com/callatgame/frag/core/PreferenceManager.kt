@@ -29,7 +29,6 @@ class PreferenceManager(private val context: Context?) {
         return getDefaultSharedPreferences(context).getString(
             Keys.KEY_TOKEN.key, "")
             .toString()
-
     }
 
     fun hasToken(): Boolean {
@@ -48,7 +47,6 @@ class PreferenceManager(private val context: Context?) {
     fun getAuthentificationMethod() : AuthentificationMethod {
         return AuthentificationMethod.valueOf(getDefaultSharedPreferences(context).getString(
             Keys.KEY_AUTHENTIFICATION_METHOD.key, "NONE").toString())
-
     }
 
 }

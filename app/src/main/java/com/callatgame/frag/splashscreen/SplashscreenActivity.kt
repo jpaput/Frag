@@ -8,10 +8,15 @@ import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.AbstractActivity
 import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.RequestCallBack
+import com.callatgame.frag.core.SessionManager
 import com.callatgame.frag.main.MainActivity
 import com.callatgame.frag.model.AuthentificationMethod
 import com.callatgame.frag.model.Config
+import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.payload.GoogleTokenPayload
+import com.callatgame.frag.service.UserService
 import com.callatgame.frag.splashscreen.task.GetConfigtask
+import com.callatgame.frag.splashscreen.task.RetreiveAuthTask
 import com.callatgame.frag.starter.StarterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import kotlinx.coroutines.Dispatchers
@@ -54,25 +59,34 @@ class SplashscreenActivity : AbstractActivity() {
         GetConfigtask(baseContext).execute(
             object : RequestCallBack<Config> {
                 override fun onSuccess(result: Config) {
-                    start()
+                    if(PreferenceManager(baseContext).getAuthentificationMethod() == AuthentificationMethod.NONE){
+                        startActivity(StarterActivity.newIntent(baseContext))
+                        finishAffinity()
+                    }else{
+                        retreiveAuth()
+                    }
                 }
 
                 override fun onError(error: CaGException) {
-                    //progress_wheel.hide()
                     showError(error.message)
                 }
             }
         )
     }
 
-    private fun start(){
+    private fun retreiveAuth(){
+        RetreiveAuthTask(baseContext).execute(
+            object : RequestCallBack<DefaultResponse> {
+                override fun onSuccess(result: DefaultResponse) {
+                    startActivity(MainActivity.newIntent(baseContext))
+                    finishAffinity()
+                }
 
-        if(PreferenceManager(baseContext).hasToken()){
-            startActivity(MainActivity.newIntent(baseContext))
-            finishAffinity()
-        }else{
-            startActivity(StarterActivity.newIntent(baseContext))
-            finishAffinity()
-        }
+                override fun onError(error: CaGException) {
+                    startActivity(StarterActivity.newIntent(baseContext))
+                    finishAffinity()
+                }
+            }
+        )
     }
 }

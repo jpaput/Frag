@@ -13,6 +13,7 @@ import com.callatgame.frag.R
 import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.AbstractFragment
 import com.callatgame.frag.core.RequestCallBack
+import com.callatgame.frag.main.MainActivity
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.payload.GoogleTokenPayload
 import com.callatgame.frag.model.payload.LoginPayload
@@ -176,7 +177,7 @@ class LoginFragment : AbstractFragment() {
 
                 override fun onSuccess(result: DefaultResponse) {
                     hideProgressDialog()
-                    showSuccessDialog()
+                    startActivity(MainActivity.newIntent(activity!!))
                 }
 
                 override fun onError(error: CaGException) {
