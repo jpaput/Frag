@@ -41,4 +41,19 @@
     <string name="bottom_navigation_menu_profile">Mon profile</string>
     <string name="bottom_navigation_menu_games">Mes matchs</string>
     <string name="bottom_navigation_menu_rank">Classement</string>
+    <string name="personal_data">Mes informations personnelles</string>
+    <string name="personal_data_name">Nom :</string>
+    <string name="personal_data_firstname">Prénom :</string>
+    <string name="personal_data_dob">Date de naissance :</string>
+    <string name="stats_title">Mes attributs</string>
+    <string name="attack_stat">Attaque</string>
+    <string name="defense_stat">Défense</string>
+    <string name="precision_stat">Adresse au tir</string>
+    <string name="speed_stat">Vitesse</string>
+    <string name="stamina_stat">Endurence</string>
+    <string name="technic_stat">Technique</string>
+    <string name="disconect">Se déconnecter</string>
+    <string name="personal_data_size">Taille :</string>
+    <string name="personal_data_email">Email :</string>
+    <string name="weight_stat">Poid :</string>
 </resources>

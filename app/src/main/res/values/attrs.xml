@@ -7,6 +7,9 @@
         <attr name="scaleType"/>
     </declare-styleable>
 
+    <declare-styleable name="DataItemView">
+        <attr name="label" format="reference" />
+    </declare-styleable>
 
     <attr name="direction">
         <enum name="up" value="0" />

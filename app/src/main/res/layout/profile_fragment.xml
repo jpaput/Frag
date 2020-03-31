@@ -1,7 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_standard">
+
+        <ImageView
+            android:id="@+id/profile_pic_imageview"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nickname_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pic_imageview" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/personal_data_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nickname_textview">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_standard">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/margin_standard"
+
+                    android:text="@string/personal_data" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/email_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:label="@string/personal_data_email" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/lastname_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:label="@string/personal_data_name" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/firstname_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:label="@string/personal_data_firstname" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/dob_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:label="@string/personal_data_dob" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/stat_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personal_data_card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_standard">
+
+                <TextView
+                    android:id="@+id/stat_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/stats_title"
+                    android:layout_marginBottom="@dimen/margin_standard"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/size_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/personal_data_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stat_title"
+                    app:layout_constraintWidth_percent="0.5"/>
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/weight_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/weight_stat"
+                    app:layout_constraintStart_toEndOf="@+id/size_div"
+                    app:layout_constraintTop_toBottomOf="@+id/stat_title"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/attack_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/attack_stat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/size_div"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/defense_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/defense_stat"
+                    app:layout_constraintStart_toEndOf="@+id/attack_div"
+                    app:layout_constraintTop_toBottomOf="@+id/size_div"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/speed_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/speed_stat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attack_div"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/stamina_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/stamina_stat"
+                    app:layout_constraintStart_toEndOf="@+id/attack_div"
+                    app:layout_constraintTop_toBottomOf="@+id/attack_div"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/technic_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/technic_stat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stamina_div"
+                    app:layout_constraintWidth_percent="0.5" />
+
+                <com.callatgame.frag.common.ui.DataItemView
+                    android:id="@+id/aim_div"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:label="@string/precision_stat"
+                    app:layout_constraintStart_toEndOf="@+id/attack_div"
+                    app:layout_constraintTop_toBottomOf="@+id/stamina_div"
+                    app:layout_constraintWidth_percent="0.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            style="@style/FullButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marge_large"
+            android:text="@string/disconect"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stat_card" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
