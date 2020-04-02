@@ -29,31 +29,52 @@
     <string name="connect_now">Me connecter</string>
     <string name="signup_button">Inscription</string>
 
-
     <!-- Email sent fragment -->
     <string name="open_email_client_description">Ouvrez votre boite mail pour valider votre email.</string>
     <string name="open_my_mail_client">Ouvrir ma boite email</string>
     <string name="choose_email">Choisissez votre client mail</string>
     <string name="insuffisant_length_password">Votre mot de passe doit contenir au moins 6 caractères</string>
 
-
     <!-- Bottom navigation menu -->
     <string name="bottom_navigation_menu_profile">Mon profile</string>
     <string name="bottom_navigation_menu_games">Mes matchs</string>
     <string name="bottom_navigation_menu_rank">Classement</string>
+
+    <!-- Fragment Profile -->
     <string name="personal_data">Mes informations personnelles</string>
+    <string name="personal_data_email">Email :</string>
+    <string name="personal_data_gender">Sexe :</string>
     <string name="personal_data_name">Nom :</string>
     <string name="personal_data_firstname">Prénom :</string>
     <string name="personal_data_dob">Date de naissance :</string>
     <string name="stats_title">Mes attributs</string>
-    <string name="attack_stat">Attaque</string>
-    <string name="defense_stat">Défense</string>
-    <string name="precision_stat">Adresse au tir</string>
-    <string name="speed_stat">Vitesse</string>
-    <string name="stamina_stat">Endurence</string>
-    <string name="technic_stat">Technique</string>
-    <string name="disconect">Se déconnecter</string>
-    <string name="personal_data_size">Taille :</string>
-    <string name="personal_data_email">Email :</string>
+    <string name="size_stat">Taille :</string>
     <string name="weight_stat">Poid :</string>
+    <string name="attack_stat">Attaque :</string>
+    <string name="defense_stat">Défense :</string>
+    <string name="precision_stat">Shoot :</string>
+    <string name="speed_stat">Vitesse :</string>
+    <string name="stamina_stat">Endurance :</string>
+    <string name="technic_stat">Technique :</string>
+    <string name="disconect">Se déconnecter</string>
+
+    <string-array name="genders_array">
+        <item>Homme</item>
+        <item>Femme</item>
+    </string-array>
+
+    <string-array name="level_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+
 </resources>

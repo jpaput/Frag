@@ -9,6 +9,14 @@
 
     <declare-styleable name="DataItemView">
         <attr name="label" format="reference" />
+        <attr name="type" format="enum">
+            <enum name="GENDER" value="0"/>
+            <enum name="LEVEL" value="1"/>
+            <enum name="SIZE" value="2"/>
+            <enum name="WEIGHT" value="3"/>
+            <enum name="FREE_EDITING" value="4"/>
+            <enum name="DATE" value="5"/>
+        </attr>
     </declare-styleable>
 
     <attr name="direction">
