@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -34,6 +35,8 @@ class ProfileFragment : AbstractFragment() {
     lateinit var staminaDiv : DataItemView
     lateinit var aimDiv : DataItemView
     lateinit var technicDiv : DataItemView
+
+    lateinit var disconnect : Button
 
 
     companion object{
@@ -71,6 +74,9 @@ class ProfileFragment : AbstractFragment() {
 
         setUpDataItemView()
         fillWithUserData()
+
+        disconnect = view.findViewById(R.id.disconnect_button)
+        disconnect.setOnClickListener{ /* TODO */ }
 
         return view
     }

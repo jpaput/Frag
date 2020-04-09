@@ -212,6 +212,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:id="@+id/disconnect_button"
             style="@style/FullButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
