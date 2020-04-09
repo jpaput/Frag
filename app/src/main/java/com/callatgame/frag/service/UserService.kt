@@ -2,13 +2,12 @@ package com.callatgame.frag.service
 
 import android.content.Context
 import com.callatgame.frag.core.AbstractService
+import com.callatgame.frag.core.SessionManager
+import com.callatgame.frag.model.CurrentUserDataWrapper
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.TokenResponse
 import com.callatgame.frag.model.User
-import com.callatgame.frag.model.payload.GoogleTokenPayload
-import com.callatgame.frag.model.payload.LoginPayload
-import com.callatgame.frag.model.payload.SignupPayload
-import com.callatgame.frag.model.payload.VerifyEmailPayload
+import com.callatgame.frag.model.payload.*
 
 class UserService(context: Context) : AbstractService(context) {
 
@@ -27,13 +26,22 @@ class UserService(context: Context) : AbstractService(context) {
             apiEndPoint.verify(payload))!!
     }
 
-    fun getUser() : User {
-        return execute(
-            apiEndPoint.getUser())!!
+    fun getUserData() {
+
+        val wrapper = execute(
+            apiEndPoint.getUserData())!!
+
+        SessionManager.instance.user = wrapper.user
+        SessionManager.instance.player = wrapper.player
     }
 
     fun sendGoogleToken(payload: GoogleTokenPayload) : TokenResponse {
         return execute(
             apiEndPoint.sendGoogleToken(payload))!!
+    }
+
+    fun updateUserData(payload : UpdateDataPayload) : DefaultResponse{
+        return execute(
+            apiEndPoint.updateUserData(payload))!!
     }
 }

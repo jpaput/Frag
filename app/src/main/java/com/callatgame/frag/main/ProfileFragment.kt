@@ -1,18 +1,17 @@
 package com.callatgame.frag.main
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.callatgame.frag.R
 import com.callatgame.frag.common.ui.DataItemView
 import com.callatgame.frag.core.AbstractFragment
 import com.callatgame.frag.core.SessionManager
+import com.callatgame.frag.utils.CircleTransform
 import com.squareup.picasso.Picasso
 
 
@@ -35,11 +34,6 @@ class ProfileFragment : AbstractFragment() {
     lateinit var staminaDiv : DataItemView
     lateinit var aimDiv : DataItemView
     lateinit var technicDiv : DataItemView
-
-
-
-
-
 
 
     companion object{
@@ -89,27 +83,28 @@ class ProfileFragment : AbstractFragment() {
     private fun fillWithUserData() {
 
         Picasso.get()
-            .load(SessionManager.instance.user.profilPic)
+            .load(SessionManager.instance.player?.profilPic)
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
+            .transform(CircleTransform())
             .into(profilPicImageView);
 
-        nicknameTextView.text = SessionManager.instance.user.userName
+        nicknameTextView.text = SessionManager.instance.player?.playername
 
-        emailDiv.setValue(SessionManager.instance.user.email)
-        genderDiv.setValue(SessionManager.instance.user.gender)
-        lastNameDiv.setValue(SessionManager.instance.user.lastName)
-        firstNameDiv.setValue(SessionManager.instance.user.firstName)
-        dobDiv.setValue(SessionManager.instance.user.dateOfBirth)
+        emailDiv.setValue(SessionManager.instance.user?.email)
+        genderDiv.setValue(SessionManager.instance.user?.gender)
+        lastNameDiv.setValue(SessionManager.instance.user?.lastName)
+        firstNameDiv.setValue(SessionManager.instance.user?.firstName)
+        dobDiv.setValue(SessionManager.instance.user?.dateOfBirth)
 
-        sizeDiv.setValue("- m")
-        weightDiv.setValue("- kg")
-        attackDiv.setValue("-")
-        defenseDiv.setValue("-")
-        speedDiv.setValue("-")
-        staminaDiv.setValue("-")
-        aimDiv.setValue("-")
-        technicDiv.setValue("-")
+        sizeDiv.setValue(SessionManager.instance.player?.size)
+        weightDiv.setValue(SessionManager.instance.player?.weight)
+        attackDiv.setValue(SessionManager.instance.player?.attack)
+        defenseDiv.setValue(SessionManager.instance.player?.defense)
+        speedDiv.setValue(SessionManager.instance.player?.speed)
+        staminaDiv.setValue(SessionManager.instance.player?.stamina)
+        aimDiv.setValue(SessionManager.instance.player?.aim)
+        technicDiv.setValue(SessionManager.instance.player?.technic)
 
     }
 }

@@ -57,6 +57,13 @@
     <string name="stamina_stat">Endurance :</string>
     <string name="technic_stat">Technique :</string>
     <string name="disconect">Se déconnecter</string>
+    <string name="free_editing_title">Editez votre %1$s</string>
+    <string name="our_size_hint">Votre taille (en cm)</string>
+    <string name="our_weight_hint">Votre poid (en kg)</string>
+    <string name="standart_hint">"Saisissez "</string>
+    <string name="validate">Valider</string>
+    <string name="cm">%1$scm</string>
+    <string name="kg">%1$skg</string>
 
     <string-array name="genders_array">
         <item>Homme</item>

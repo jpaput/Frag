@@ -7,7 +7,6 @@ import com.callatgame.frag.core.SessionManager
 import com.callatgame.frag.model.AuthentificationMethod
 import com.callatgame.frag.model.DefaultResponse
 import com.callatgame.frag.model.payload.GoogleTokenPayload
-import com.callatgame.frag.model.payload.LoginPayload
 import com.callatgame.frag.service.UserService
 
 class SendGoogleTokenTask(val context: Context, val payload: GoogleTokenPayload) : AbstractTask<DefaultResponse>(context) {
@@ -18,7 +17,7 @@ class SendGoogleTokenTask(val context: Context, val payload: GoogleTokenPayload)
         PreferenceManager(context).saveToken(result.token)
         PreferenceManager(context).setAuthentificationMethod(AuthentificationMethod.GOOGLE)
 
-        SessionManager.instance.user = UserService(context).getUser()
+        UserService(context).getUserData()
 
         return DefaultResponse("")
     }

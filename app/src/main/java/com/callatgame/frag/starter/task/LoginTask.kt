@@ -14,8 +14,7 @@ class LoginTask(val context: Context, val payload: LoginPayload) : AbstractTask<
     override fun doCall(): DefaultResponse {
         val result = UserService(context).login(payload)
         PreferenceManager(context).saveToken(result.token)
-
-        SessionManager.instance.user = UserService(context).getUser()
+        UserService(context).getUserData()
         PreferenceManager(context).setAuthentificationMethod(AuthentificationMethod.CREDENTIALS)
 
         return DefaultResponse("")

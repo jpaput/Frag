@@ -1,17 +1,9 @@
 package com.callatgame.frag.core
 
-import com.callatgame.frag.model.Config
-import com.callatgame.frag.model.DefaultResponse
-import com.callatgame.frag.model.TokenResponse
-import com.callatgame.frag.model.User
-import com.callatgame.frag.model.payload.GoogleTokenPayload
-import com.callatgame.frag.model.payload.LoginPayload
-import com.callatgame.frag.model.payload.SignupPayload
-import com.callatgame.frag.model.payload.VerifyEmailPayload
+import com.callatgame.frag.model.*
+import com.callatgame.frag.model.payload.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiEndPoint {
 
@@ -29,6 +21,9 @@ interface ApiEndPoint {
         const val VERIFY = "/verify"
         const val ME = "/me"
         const val GOOGLE = "/googleTokenSignin"
+
+        //Players
+        const val PLAYER = "/players"
 
     }
 
@@ -49,7 +44,7 @@ interface ApiEndPoint {
 
     //Get current user data
     @GET(API + V1 + USERS + ME)
-    fun getUser(): Call<User>
+    fun getUserData(): Call<CurrentUserDataWrapper>
 
     //Send Google token after Google SignIn
     @POST(API + V1 + USERS + GOOGLE)
@@ -57,4 +52,16 @@ interface ApiEndPoint {
 
     @GET(API + V1 + TECHNICAL + "/401")
     fun test401(): Call<DefaultResponse?>
+
+    //Get playerData
+    @GET(API + V1 + PLAYER)
+    fun getPlayerData(@Query("playerId") playerId: Int): Call<Player>
+
+    // Update user data
+    @PUT(API + V1 + USERS)
+    fun updateUserData(@Body  payload: UpdateDataPayload): Call<DefaultResponse>
+
+    // Update player data
+    @PUT(API + V1 + PLAYER)
+    fun updatePlayerData(@Body  payload: UpdateDataPayload): Call<DefaultResponse>
 }

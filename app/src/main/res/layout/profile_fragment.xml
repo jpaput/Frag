@@ -64,28 +64,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:label="@string/personal_data_gender"
-                    app:type="GENDER"/>
+                    app:field="gender"
+                    app:dataType="user"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/lastname_div"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:label="@string/personal_data_name"
-                    app:type="FREE_EDITING"/>
+                    app:field="lastname"
+                    app:dataType="user"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/firstname_div"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:label="@string/personal_data_firstname"
-                    app:type="FREE_EDITING"/>
+                    app:field="firstname"
+                    app:dataType="user"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/dob_div"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:label="@string/personal_data_dob"
-                    app:type="DATE"/>
+                    app:field="dob"
+                    app:dataType="user"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -125,7 +129,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stat_title"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="SIZE"/>
+                    app:field="size"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/weight_div"
@@ -135,7 +140,8 @@
                     app:layout_constraintStart_toEndOf="@+id/size_div"
                     app:layout_constraintTop_toBottomOf="@+id/stat_title"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="WEIGHT"/>
+                    app:field="weight"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/attack_div"
@@ -145,7 +151,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/size_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="attack"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/defense_div"
@@ -155,7 +162,8 @@
                     app:layout_constraintStart_toEndOf="@+id/attack_div"
                     app:layout_constraintTop_toBottomOf="@+id/size_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="defense"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/speed_div"
@@ -165,7 +173,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/attack_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="speed"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/stamina_div"
@@ -175,7 +184,8 @@
                     app:layout_constraintStart_toEndOf="@+id/attack_div"
                     app:layout_constraintTop_toBottomOf="@+id/attack_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="stamina"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/technic_div"
@@ -185,7 +195,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stamina_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="technic"
+                    app:dataType="player"/>
 
                 <com.callatgame.frag.common.ui.DataItemView
                     android:id="@+id/aim_div"
@@ -195,7 +206,8 @@
                     app:layout_constraintStart_toEndOf="@+id/attack_div"
                     app:layout_constraintTop_toBottomOf="@+id/stamina_div"
                     app:layout_constraintWidth_percent="0.5"
-                    app:type="LEVEL"/>
+                    app:field="aim"
+                    app:dataType="player"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
