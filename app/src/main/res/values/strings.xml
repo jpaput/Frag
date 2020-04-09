@@ -65,9 +65,12 @@
     <string name="cm">%1$scm</string>
     <string name="kg">%1$skg</string>
 
+    <string name="male">Homme</string>
+    <string name="female">Femme</string>
+
     <string-array name="genders_array">
-        <item>Homme</item>
-        <item>Femme</item>
+        <item>@string/male</item>
+        <item>@string/female</item>
     </string-array>
 
     <string-array name="level_array">

@@ -10,18 +10,19 @@
     <declare-styleable name="DataItemView">
         <attr name="label" format="reference" />
         <attr name="field" format="enum">
-            <enum name="gender" value="0"/>
-            <enum name="firstname" value="1"/>
-            <enum name="lastname" value="2"/>
-            <enum name="dob" value="3"/>
-            <enum name="size" value="4"/>
-            <enum name="weight" value="5"/>
-            <enum name="attack" value="6"/>
-            <enum name="defense" value="7"/>
-            <enum name="speed" value="8"/>
-            <enum name="stamina" value="9"/>
-            <enum name="aim" value="10"/>
-            <enum name="technic" value="11"/>
+            <enum name="not_defined" value="0"/>
+            <enum name="gender" value="1"/>
+            <enum name="firstname" value="2"/>
+            <enum name="lastname" value="3"/>
+            <enum name="dob" value="4"/>
+            <enum name="size" value="5"/>
+            <enum name="weight" value="6"/>
+            <enum name="attack" value="7"/>
+            <enum name="defense" value="8"/>
+            <enum name="speed" value="9"/>
+            <enum name="stamina" value="10"/>
+            <enum name="aim" value="11"/>
+            <enum name="technic" value="12"/>
         </attr>
         <attr name="dataType" format="enum">
             <enum name="user" value="0"/>

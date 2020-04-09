@@ -1,5 +1,6 @@
 package com.callatgame.frag.common.ui
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.text.InputType
@@ -13,6 +14,10 @@ import com.callatgame.frag.common.exception.CaGException
 import com.callatgame.frag.core.RequestCallBack
 import com.callatgame.frag.main.task.UpdateDataTask
 import com.callatgame.frag.model.DefaultResponse
+import com.callatgame.frag.model.Gender
+import com.callatgame.frag.utils.DateUtil
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DataItemView  @JvmOverloads constructor(
@@ -22,7 +27,7 @@ class DataItemView  @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     enum class Field {
-        gender, firstname, lastname, dob, size, weight, attack, defense, speed, stamina, aim, technic
+        not_defined, gender, firstname, lastname, dob, size, weight, attack, defense, speed, stamina, aim, technic
     }
 
     enum class DataType {
@@ -52,7 +57,7 @@ class DataItemView  @JvmOverloads constructor(
         labelTextView.text = label
 
         when(field){
-            Field.gender -> setupMultiSelection(R.array.genders_array)
+            Field.gender -> setupGenderSelection()
             Field.firstname, Field.lastname -> setupFreeEditing(R.string.standart_hint,  InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS)
             Field.dob -> setupDateSelection()
             Field.attack,
@@ -67,6 +72,26 @@ class DataItemView  @JvmOverloads constructor(
     }
 
     private fun setupDateSelection() {
+
+        this.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val year = cal.get(Calendar.YEAR)
+            val month = cal.get(Calendar.MONTH)
+            val day = cal.get(Calendar.DAY_OF_MONTH)
+
+            DatePickerDialog(
+                context,
+                R.style.DatePicker,
+                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    cal.set(Calendar.YEAR, year)
+                    cal.set(Calendar.MONTH, monthOfYear)
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                    updateValue(SimpleDateFormat(DateUtil.POSTGRE_TIME_FORMAT, Locale.US).format(cal.time))
+                },
+                year, month, day
+            ).show()
+        }
     }
 
     private fun setupFreeEditing(hintRest : Int, inputType :Int) {
@@ -113,7 +138,25 @@ class DataItemView  @JvmOverloads constructor(
 
             builder.setItems(resources.getStringArray(array),
                 DialogInterface.OnClickListener { dialog, which ->
+
                     updateValue(resources.getStringArray(array)[which])
+                })
+
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+    }
+
+    private fun setupGenderSelection() {
+        this.setOnClickListener{
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+
+            builder.setItems(resources.getStringArray(R.array.genders_array),
+                DialogInterface.OnClickListener { dialog, position ->
+                    when(position){
+                        0 -> updateValue("M")
+                        1 -> updateValue("F")
+                    }
                 })
 
             val dialog: AlertDialog = builder.create()
@@ -131,6 +174,11 @@ class DataItemView  @JvmOverloads constructor(
             when(field){
                 Field.size -> displayableValue = resources.getString(R.string.cm, value)
                 Field.weight -> displayableValue = resources.getString(R.string.kg, value)
+                Field.dob -> {
+                    val date : Date = SimpleDateFormat(DateUtil.POSTGRE_TIME_FORMAT, Locale.US).parse(value)
+                    displayableValue = SimpleDateFormat(DateUtil.DISPLAYABLE_TIME_FORMAT, Locale.FRANCE).format(date)
+                }
+                Field.gender -> displayableValue = resources.getString(Gender.fromValue(value)!!.res)
                 else -> displayableValue = value
             }
         }
