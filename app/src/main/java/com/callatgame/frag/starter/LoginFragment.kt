@@ -71,7 +71,7 @@ class LoginFragment : AbstractFragment() {
     private fun makePayload(): LoginPayload {
         return LoginPayload(
             email_edittext.text.toString(),
-            password_edittext.toString()
+            password_edittext.text.toString()
         )
     }
 
@@ -126,7 +126,7 @@ class LoginFragment : AbstractFragment() {
 
                 override fun onSuccess(result: DefaultResponse) {
                     hideProgressDialog()
-                    showSuccessDialog()
+                    startActivity(MainActivity.newIntent(activity!!))
                 }
 
                 override fun onError(error: CaGException) {

@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import com.callatgame.frag.R
 import com.callatgame.frag.common.ui.DataItemView
 import com.callatgame.frag.core.AbstractFragment
+import com.callatgame.frag.core.PreferenceManager
 import com.callatgame.frag.core.SessionManager
+import com.callatgame.frag.starter.StarterActivity
 import com.callatgame.frag.utils.CircleTransform
 import com.squareup.picasso.Picasso
 
@@ -72,18 +74,15 @@ class ProfileFragment : AbstractFragment() {
         aimDiv = view.findViewById(R.id.aim_div)
         technicDiv = view.findViewById(R.id.technic_div)
 
-        setUpDataItemView()
         fillWithUserData()
 
         disconnect = view.findViewById(R.id.disconnect_button)
-        disconnect.setOnClickListener{ /* TODO */ }
+        disconnect.setOnClickListener{
+            PreferenceManager(activity!!.applicationContext).clearPreference()
+            startActivity(StarterActivity.newIntent(activity!!.applicationContext))
+        }
 
         return view
-    }
-
-    private fun setUpDataItemView() {
-
-
     }
 
     private fun fillWithUserData() {
